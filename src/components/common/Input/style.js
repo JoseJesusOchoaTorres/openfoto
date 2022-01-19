@@ -12,8 +12,10 @@ export const Input = styled.input.attrs(props => ({
   type: props.type
 }))`
   background-color: ${({ theme }) => theme.colors.body}80;
-  border: 1px solid ${({ theme }) => theme.colors.body}80;
+  border-color: ${({ theme }) => theme.colors.body}80;
   color: ${({ theme }) => theme.colors.text};
+  border-style: solid;
+  border-width: 1px;
   padding: 0.5rem 2.3rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -32,14 +34,17 @@ export const Input = styled.input.attrs(props => ({
     font-size: 0.8rem;
   }
 
+  :hover {
+    border-color: ${({ theme }) => theme.colors.text}20;
+  }
 
-  :hover,
   :focus {
-    border: 1px solid ${({ theme }) => theme.colors.text}20;
+    border-color: ${({ theme }) => theme.colors.text}90;
   }
 `;
 
 const baseInputIcons = css`
+  color: ${({ theme }) => theme.colors.text}90;
   position: absolute;
   padding: 0.3rem;
   cursor: pointer;
@@ -47,7 +52,17 @@ const baseInputIcons = css`
 
 export const ClearIcon = styled(Icon)`
   ${baseInputIcons}
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  outline: 0;
   right: 5px;
+
+  transition: border 0.2s;
+
+  :focus {
+    border-color: ${({ theme }) => theme.colors.text}90;
+  }
 `;
 
 export const InputIcon = styled(Icon)`

@@ -13,23 +13,21 @@ export const HeaderContainer = styled.header`
   }
 `
 
-/**
- * TODOS:
- * - It should be a button.
- * - It could be a reusable component in the common folder.
- */
 export const FavoritesButton = styled(Icon)`
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 50%;
   cursor: pointer;
   padding: 0.5rem;
+  outline: 0;
 
   transition: all 0.2s;
 
-  :hover,
-  :focus {
+  :hover {
     border-color: ${({ theme }) => theme.colors.text}20;
-    outline: 0;
+  }
+
+  :focus {
+    border-color: ${({ theme }) => theme.colors.text}90;
   }
 `;

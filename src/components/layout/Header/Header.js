@@ -25,7 +25,14 @@ export const Header = () => {
         </Column>
 
         <Column className="text-right">
-          <FavoritesButton as="button" icon={IconsInterface.heart} />
+          <FavoritesButton
+            as="button"
+            role="button"
+            title="Favorites"
+            aria-hidden="false"
+            aria-label="Favorites"
+            icon={IconsInterface.heart}
+          />
         </Column>
       </Row>
     </HeaderContainer>

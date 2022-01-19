@@ -1,5 +1,6 @@
 export const IconsInterface = {
-    cleanSearch: 'times',
-    search: 'search',
+    cleanSearch: 'close',
+    search: 'search-alt',
     heart: 'heart',
+    'heart-filled': 'heart-filled',
 }
