@@ -27,8 +27,9 @@ export const FavoritesButton = styled(Icon)`
 
   transition: all 0.2s;
 
-  :hover
+  :hover,
   :focus {
     border-color: ${({ theme }) => theme.colors.text}20;
+    outline: 0;
   }
 `;
