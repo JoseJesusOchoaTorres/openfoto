@@ -7,7 +7,7 @@ export const Container = ({
 }) => {
   return (
     <div
-      className='flex horizontal-center'
+      className='flex wrap horizontal-center'
       aria-labelledby={groupId}
       role="radiogroup"
     >

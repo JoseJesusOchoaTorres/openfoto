@@ -4,6 +4,10 @@ import PropTypes from 'prop-types'
 // Local components
 import { RadioOption } from './style'
 
+/**
+ * TODO: (Accessibility) It's necessary to
+ * handlekeyboard events.
+ */
 export const Option = ({
   selectedOption,
   onChange,
@@ -11,6 +15,12 @@ export const Option = ({
   index,
   text
 }) => {
+  /**
+   * Return true or false depending if the
+   * current element is selected or not.
+   * 
+   * @returns {boolean}
+   */
   const isSelected = () => value === selectedOption
 
   return (

@@ -31,7 +31,7 @@ export const Input = styled.input.attrs(props => ({
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.text}90;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   :hover {

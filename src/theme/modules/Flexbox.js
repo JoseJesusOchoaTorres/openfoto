@@ -5,6 +5,10 @@ export const Flexbox = css`
     display: flex;
   }
 
+  .wrap {
+    flex-wrap: wrap;
+  }
+
   .horizontal {
     &-left {
       justify-content: flex-start;

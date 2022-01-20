@@ -10,7 +10,7 @@ export const Header = () => {
     <HeaderContainer>
       <Row className="vertical-center horizontal-between">
         <Column>
-          <h1 className="h6 bold">
+          <h1 className="h5 bold">
             <a href="/" title="OpenFoto">
               ▲ OpenFoto
             </a>
