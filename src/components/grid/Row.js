@@ -7,6 +7,6 @@ export const Row = styled.div`
   ${(props) => !props.fullWidth && css`
     margin-right: auto;
     margin-left: auto;
-    max-width: 1140px;
+    max-width: 1540px;
   `}
 `
