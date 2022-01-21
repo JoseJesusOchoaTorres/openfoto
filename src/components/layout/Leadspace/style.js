@@ -1,4 +1,8 @@
+// External libraries
 import styled from "styled-components"
+
+// Constants
+import { PlaceholderImage } from "utils/constants"
 
 export const LeadspaceContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.text};
@@ -8,7 +12,7 @@ export const LeadspaceContainer = styled.div`
       ${({ theme }) => theme.colors.text} 0%,
       ${({ theme }) => theme.colors.text}20 100%
     ),
-    url("https://source.unsplash.com/random/1000x1000") no-repeat center / cover;
+    url(${PlaceholderImage}) no-repeat center / cover;
   background-attachment: fixed;
   color: ${({ theme }) => theme.colors.body};
   padding: 20vh 1rem;

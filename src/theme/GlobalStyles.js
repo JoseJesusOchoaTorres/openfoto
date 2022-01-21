@@ -14,7 +14,6 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.body};
     color: ${({ theme }) => theme.colors.text};
     font-family: Arial, Helvetica, sans-serif;
-    transition: all 0.50s linear;
     margin: 0;
 
     -webkit-font-smoothing: antialiased;

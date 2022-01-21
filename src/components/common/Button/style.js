@@ -24,6 +24,4 @@ export const ButtonBase = styled.button`
   }
 `;
 
-export const ButtonIcon = styled(Icon)`
-  
-`;
+export const ButtonIcon = styled(Icon)``;

@@ -9,7 +9,7 @@ export const Container = styled.figure`
   color: ${({ theme }) => theme.colors.body};
   position: relative;
 
-  > image:hover {
+  image:hover {
     opacity: 0.2;
   }
 `
@@ -20,6 +20,7 @@ export const AuthorContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
+  overflow: hidden;
   display: flex;
   opacity: 0;
   bottom: 0;
