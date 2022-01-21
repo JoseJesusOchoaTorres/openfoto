@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Icon } from 'components/common/Icon'
 
 export const HeaderContainer = styled.header`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.text}20;
   background-color: ${({ theme }) => theme.colors.body}80;
   backdrop-filter: blur(10px);
   padding: 1rem 2rem;
@@ -25,7 +26,7 @@ export const FavoritesButton = styled(Icon)`
   transition: all 0.2s;
 
   :hover {
-    border-color: ${({ theme }) => theme.colors.text}20;
+    border-color: ${({ theme }) => theme.colors.text}40;
   }
 
   :focus {

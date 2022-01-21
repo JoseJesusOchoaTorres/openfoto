@@ -8,7 +8,6 @@ export const Container = styled.figure`
   background-color: ${({ theme }) => theme.colors.text};
   color: ${({ theme }) => theme.colors.body};
   position: relative;
-  cursor: pointer;
 
   > image:hover {
     opacity: 0.2;
@@ -37,7 +36,9 @@ export const AuthorContainer = styled.div`
   }
 `
 
-export const ActionsContainer = styled.div``
+export const ActionsContainer = styled.div`
+  display: flex;
+`
 
 export const AuthorName = styled.figcaption`
   font-family: Helvetica, sans-serif;

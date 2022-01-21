@@ -1,15 +1,30 @@
 // External libraries
 import PropTypes from 'prop-types'
 
+// Common components
+import { Button } from 'components/common/Button'
+
 // Local components
 import {
   Container,
   AuthorContainer,
   AuthorImageProfile,
-  AuthorName
+  AuthorName,
+  ActionsContainer
 } from './style'
 
+// Constants
+import { IconsInterface } from 'utils/constants'
+
+/**
+ * TODO: Remove this mock
+ */
 export const ImageActions = ({ image }) => {
+  /**
+   * Icons
+   */
+  const { download, heart } = IconsInterface
+
   const mockingUserProfile = {
     first_name: 'Javier',
     last_name: 'Esteban',
@@ -20,7 +35,6 @@ export const ImageActions = ({ image }) => {
   }
 
   const composeFullName = () => `${mockingUserProfile.first_name} ${mockingUserProfile.last_name}`
-
   return (
     <Container>
       {image}
@@ -32,6 +46,11 @@ export const ImageActions = ({ image }) => {
         <AuthorName>
           {composeFullName()}
         </AuthorName>
+
+        <ActionsContainer>
+          <Button title="Download" icon={download} />
+          <Button title="Add to favorites" icon={heart} />
+        </ActionsContainer>
       </AuthorContainer>
     </Container>
   )

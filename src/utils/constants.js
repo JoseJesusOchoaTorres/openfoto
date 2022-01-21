@@ -1,8 +1,9 @@
 export const IconsInterface = {
+  'heart-filled': 'heart-filled',
   cleanSearch: 'close',
   search: 'search-alt',
   heart: 'heart',
-  'heart-filled': 'heart-filled',
+  download: 'download',
 }
 
 export const FilterOptions = [

@@ -6,6 +6,6 @@ export const FooterContainer = styled.footer`
 
 export const Description = styled.p`
   background-color: ${({ theme }) => theme.colors.body};
-  padding: 0.4rem 1rem;
+  padding: 1.5rem 3rem;
   display: inline;
 `
