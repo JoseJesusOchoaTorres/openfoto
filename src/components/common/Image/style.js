@@ -11,6 +11,7 @@ export const Image = styled.img.attrs(({
   src,
   alt
 }))`
+  display: block;
   height: auto;
   width: 100%;
 `;

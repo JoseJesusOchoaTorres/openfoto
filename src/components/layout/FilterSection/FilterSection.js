@@ -7,17 +7,8 @@ import { FilterSection as Section } from './style'
 // Common components
 import { RadioButtons } from 'components/common/RadioButtons'
 
-// Valid options
-export const FilterOptions = [
-  {
-    text: 'Latest',
-    value: 'updated_at'
-  },
-  {
-    text: 'Favorites',
-    value: 'likes'
-  }
-]
+// Valid filter options
+import { FilterOptions } from 'utils/constants'
 
 export const FilterSection = ({
   filter = FilterOptions[0].value

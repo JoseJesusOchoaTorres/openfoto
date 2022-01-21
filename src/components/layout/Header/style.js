@@ -6,6 +6,7 @@ export const HeaderContainer = styled.header`
   backdrop-filter: blur(10px);
   padding: 1rem 2rem;
   position: sticky;
+  z-index: 1;
   top: 0;
 
   @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
