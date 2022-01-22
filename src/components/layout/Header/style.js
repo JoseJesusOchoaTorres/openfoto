@@ -2,10 +2,12 @@ import styled from 'styled-components'
 import { Icon } from 'components/common/Icon'
 
 export const HeaderContainer = styled.header`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.text}20;
   background-color: ${({ theme }) => theme.colors.body}80;
   backdrop-filter: blur(10px);
   padding: 1rem 2rem;
   position: sticky;
+  z-index: 1;
   top: 0;
 
   @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
@@ -13,23 +15,22 @@ export const HeaderContainer = styled.header`
   }
 `
 
-/**
- * TODOS:
- * - It should be a button.
- * - It could be a reusable component in the common folder.
- */
-export const FavoritesButton = styled(Icon)`
+export const HeaderButton = styled(Icon)`
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 50%;
-  cursor: pointer;
+  margin: 0 0.5rem;
   padding: 0.5rem;
+  cursor: pointer;
+  outline: 0;
 
   transition: all 0.2s;
 
-  :hover,
+  :hover {
+    border-color: ${({ theme }) => theme.colors.text}40;
+  }
+
   :focus {
-    border-color: ${({ theme }) => theme.colors.text}20;
-    outline: 0;
+    border-color: ${({ theme }) => theme.colors.text}90;
   }
 `;

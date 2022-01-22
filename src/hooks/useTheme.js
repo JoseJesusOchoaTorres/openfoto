@@ -12,6 +12,12 @@ export const useTheme = () => {
     setTheme(mode)
   }
 
+  const toggleMode = () => {
+    theme.name === 'light' ?
+      setMode(themes.data.dark) :
+      setMode(themes.data.light)
+  }
+
   useEffect(() => {
     const localTheme = localStorageGetter('theme')
     localTheme ? setTheme(localTheme) : setTheme(themes.data.light)
@@ -20,5 +26,5 @@ export const useTheme = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return { themes, theme, themeLoaded, setMode }
+  return { themes, theme, themeLoaded, setMode, toggleMode }
 }

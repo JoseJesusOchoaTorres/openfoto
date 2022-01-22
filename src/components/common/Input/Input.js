@@ -11,13 +11,25 @@ import {
 export const TextInput = ({
   type = 'text',
   placeholder= '',
-  icon = 'search'
+  icon = IconsInterface.search
 }) => {
   return (
     <InputContainer>
-      <InputIcon icon={icon} />
-      <Input type={type} placeholder={placeholder} />
-      <ClearIcon icon={IconsInterface.cleanSearch} />
+      <InputIcon
+        aria-hidden="true"
+        icon={icon}
+      />
+      <Input
+        type={type}
+        placeholder={placeholder}
+      />
+      <ClearIcon
+        as="button"
+        className="h6"
+        aria-hidden="false"
+        aria-label="Clear search"
+        title="Clear search"
+        icon={IconsInterface.cleanSearch} />
     </InputContainer>
   )
 }
