@@ -1,11 +1,10 @@
-// Libraries
-import { useState, useEffect } from 'react'
+// External libraries
 import { ThemeProvider } from "styled-components";
 
 // Styles
 import { GlobalStyles } from 'theme/GlobalStyles'
 
-// Hooks
+// Custom hooks
 import { useTheme } from 'hooks/useTheme'
 
 // Pages
@@ -14,20 +13,18 @@ import { Header } from 'components/layout/Header'
 import { Footer } from 'components/layout/Footer'
 
 function App() {
-  const { theme, themeLoaded } = useTheme()
-  const [selectedTheme, setSelectedTheme] = useState(theme)
-
-  useEffect(() => {
-    setSelectedTheme(theme)
-  }, [theme])
+  const { theme, themeLoaded, toggleMode } = useTheme()
 
   return (
     <>
       {
         themeLoaded &&
-          <ThemeProvider theme={selectedTheme}>
+          <ThemeProvider theme={theme}>
             <GlobalStyles />
-            <Header />
+            <Header
+              toggleMode={toggleMode}
+              theme={theme}
+            />
             <Home />
             <Footer />
           </ThemeProvider>

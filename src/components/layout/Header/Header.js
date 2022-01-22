@@ -1,11 +1,16 @@
-import { HeaderContainer, FavoritesButton } from './style'
+// Local components
+import { HeaderContainer, HeaderButton } from './style'
+
+// Common componentes
 import { TextInput } from 'components/common/Input'
+
+// Grid components
 import { Row, Column } from 'components/grid'
 
+// Constants
 import { IconsInterface } from 'utils/constants'
 
-
-export const Header = () => {
+export const Header = ({ toggleMode, theme }) => {
   return (
     <HeaderContainer>
       <Row className="vertical-center horizontal-between">
@@ -25,7 +30,16 @@ export const Header = () => {
         </Column>
 
         <Column className="text-right">
-          <FavoritesButton
+          <HeaderButton
+            as="button"
+            role="button"
+            title="Theme color"
+            aria-hidden="false"
+            aria-label="Theme color"
+            icon={IconsInterface[theme.name]}
+            onClick={() => toggleMode()}
+          />
+          <HeaderButton
             as="button"
             role="button"
             title="Favorites"

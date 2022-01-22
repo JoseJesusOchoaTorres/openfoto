@@ -15,12 +15,13 @@ export const HeaderContainer = styled.header`
   }
 `
 
-export const FavoritesButton = styled(Icon)`
+export const HeaderButton = styled(Icon)`
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 50%;
-  cursor: pointer;
+  margin: 0 0.5rem;
   padding: 0.5rem;
+  cursor: pointer;
   outline: 0;
 
   transition: all 0.2s;

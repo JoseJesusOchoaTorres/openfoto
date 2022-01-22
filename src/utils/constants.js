@@ -4,6 +4,8 @@ export const IconsInterface = {
   search: 'search-alt',
   heart: 'heart',
   download: 'download',
+  light: 'night',
+  dark: 'sun',
 }
 
 export const FilterOptions = [
