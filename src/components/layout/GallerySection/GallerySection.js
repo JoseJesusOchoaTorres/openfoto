@@ -1,3 +1,6 @@
+// External libraries
+import PropTypes from 'prop-types'
+
 // Grid components
 import { Row, Column } from 'components/grid'
 
@@ -8,35 +11,48 @@ import { Image } from 'components/common/Image'
 // Local components
 import { GallerySection as Section } from "./style"
 
-export const GallerySection = () => {
-  /**
-   * Remove it after we get the data from the API
-   */
-  let keyCounter = 1
+export const GallerySection = ({ photos }) => {
   return (
     <Section.Container className="flex horizontal-center">
       <Row>
-        {[...Array(50)].map((index) => {
-          return (
-            <Column key={`column-${keyCounter++}`} xs="12" sm="12" md="6" lg="4" xl="3">
-              <ImageActions
-                image={
-                  <Image
-                    alt="test"
-                    loading="lazy"
-                    srcSet="https://source.unsplash.com/random/150x150 150w,
-                      https://source.unsplash.com/random/300x300 300w,
-                      https://source.unsplash.com/random/600x600 600w,
-                      https://source.unsplash.com/random/1000x1000 1000w,
-                      https://source.unsplash.com/random/1500x1500 1500w"
-                    src='https://source.unsplash.com/random/1000x1000'
-                  />
-                }
-              />
-            </Column>
-          )
-        })}
+        {!!photos && photos.map(({ id, alt_description = '', user, links, urls }) => (
+          <Column key={id} xs="12" sm="12" md="6" lg="4" xl="3">
+            <ImageActions
+              id={id}
+              user={user}
+              links={links}
+              image={
+                <Image
+                  alt={alt_description}
+                  loading="lazy"
+                  srcSet={`
+                    ${urls.thumb} 150w,
+                    ${urls.small} 300w,
+                    ${urls.regular} 600w,
+                    ${urls.raw} 1000w,
+                    ${urls.full} 1500w
+                  `}
+                  src={urls.full}
+                />
+              }
+            />
+          </Column>
+        ))}
       </Row>
     </Section.Container>
+  )
+}
+
+GallerySection.propTypes = {
+  photos: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      alt_description: PropTypes.string,
+      user: PropTypes.object.isRequired,
+      links: PropTypes.object.isRequired,
+      urls: PropTypes.shape({
+        full: PropTypes.string.isRequired
+      })
+    })
   )
 }
