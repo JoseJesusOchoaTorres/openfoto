@@ -6,6 +6,9 @@ export const FooterContainer = styled.footer`
 
 export const Description = styled.p`
   background-color: ${({ theme }) => theme.colors.body};
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 5vw;
+  line-height: 3rem;
+  line-break: auto;
   display: inline;
+  margin: 0;
 `

@@ -12,6 +12,9 @@ import { Home } from 'components/pages/Home'
 import { Header } from 'components/layout/Header'
 import { Footer } from 'components/layout/Footer'
 
+// Context
+import { FilterProvider } from "context/FilterProvider";
+
 function App() {
   const { theme, themeLoaded, toggleMode } = useTheme()
 
@@ -19,15 +22,17 @@ function App() {
     <>
       {
         themeLoaded &&
-          <ThemeProvider theme={theme}>
-            <GlobalStyles />
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <FilterProvider>
             <Header
               toggleMode={toggleMode}
               theme={theme}
             />
             <Home />
             <Footer />
-          </ThemeProvider>
+          </FilterProvider>
+        </ThemeProvider>
       }
     </>
   );

@@ -16,7 +16,7 @@ export const GallerySection = ({ photos }) => {
     <Section.Container className="flex horizontal-center">
       <Row>
         {!!photos && photos.map(({ id, alt_description = '', user, links, urls }) => (
-          <Column key={id} xs="12" sm="12" md="6" lg="4" xl="3">
+          <Column key={id} padding="1" xs="12" sm="12" md="6" lg="4" xl="3">
             <ImageActions
               id={id}
               user={user}
@@ -24,6 +24,7 @@ export const GallerySection = ({ photos }) => {
               image={
                 <Image
                   alt={alt_description}
+                  objectFit="cover"
                   loading="lazy"
                   srcSet={`
                     ${urls.thumb} 150w,
@@ -44,7 +45,7 @@ export const GallerySection = ({ photos }) => {
 }
 
 GallerySection.propTypes = {
-  photos: PropTypes.objectOf(
+  photos: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       alt_description: PropTypes.string,

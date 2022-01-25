@@ -1,4 +1,7 @@
+// External libraries
 import styled from 'styled-components'
+
+// Common components
 import { Icon } from 'components/common/Icon'
 
 export const HeaderContainer = styled.header`

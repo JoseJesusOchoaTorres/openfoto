@@ -44,7 +44,7 @@ export const ImageActions = ({ id, user, links, image }) => {
           >
             <Button title="Download" icon={download} />
           </a>
-          <Button title="Add to favorites" icon={heart} />
+          <Button title="Add to favorites" icon={heart} data-image-id={id} />
         </ActionsContainer>
       </AuthorContainer>
     </Container>
@@ -54,15 +54,6 @@ export const ImageActions = ({ id, user, links, image }) => {
 ImageActions.propTypes = {
   id: PropTypes.string.isRequired,
   image: PropTypes.node.isRequired,
-  user: PropTypes.objectOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      profile_image: PropTypes.string.isRequired,
-    })
-  ),
-  links: PropTypes.objectOf(
-    PropTypes.shape({
-      links: PropTypes.string.isRequired,
-    })
-  )
+  user: PropTypes.object.isRequired,
+  links: PropTypes.object.isRequired
 }

@@ -11,6 +11,7 @@ export const Image = styled.img.attrs(({
   src,
   alt
 }))`
+  object-fit: ${(props) => props.objectFit || 'contain'};
   display: block;
   height: auto;
   width: 100%;

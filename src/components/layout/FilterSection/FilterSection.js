@@ -1,5 +1,5 @@
 // External libraries
-import { useState } from 'react'
+import { useContext } from 'react'
 
 // Local components
 import { FilterSection as Section } from './style'
@@ -10,10 +10,11 @@ import { RadioButtons } from 'components/common/RadioButtons'
 // Valid filter options
 import { FilterOptions } from 'utils/constants'
 
-export const FilterSection = ({
-  filter = FilterOptions[0].value
-}) => {
-  const [filterSelected, setFilterSelected] = useState(filter)
+// Context
+import { FilterContext } from 'context/FilterProvider'
+
+export const FilterSection = () => {
+  const [filter, setFilter] = useContext(FilterContext)
 
   return (
     <Section.Container>
@@ -22,9 +23,9 @@ export const FilterSection = ({
       <Section.Filters>
         <RadioButtons.Container groupId="filter">
           <RadioButtons
-            selectedOption={filterSelected}
-            onChange={setFilterSelected}
             options={FilterOptions}
+            selectedOption={filter}
+            onChange={setFilter}
           />
         </RadioButtons.Container>
       </Section.Filters>

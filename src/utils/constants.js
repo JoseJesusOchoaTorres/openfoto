@@ -1,4 +1,5 @@
 export const IconsInterface = {
+  'spinner-solid': 'spinner-solid',
   'heart-filled': 'heart-filled',
   cleanSearch: 'close',
   search: 'search-alt',
