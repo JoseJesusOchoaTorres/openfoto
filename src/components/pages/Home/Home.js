@@ -1,5 +1,5 @@
 // External libraries
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 
 // General components
 import { ErrorMessage } from 'components/common/ErrorMessage'
@@ -31,15 +31,18 @@ import { getRandomPhotos } from 'utils/api/endpoints'
 import { FilterContext } from 'context/FilterProvider'
 
 export const Home = () => {
-  const { data, run, isLoading, isSuccess, isError } = useAsync()
-  const [filteredData, setFilteredData] = useState([])
+  const { data, setData, run, isLoading, isSuccess, isError } = useAsync()
   const [filter] = useContext(FilterContext)
 
+  /**
+   * Fetching default data
+   */
   useEffect(() => run(fetch(getRandomPhotos())), [run])
-  useEffect(() => setFilteredData(data), [data])
-  useEffect(() => setFilteredData(
-    filteredData?.sort(dynamicSort(filter))), [filter, filteredData]
-  )
+
+  /**
+   * Applying filter
+   */
+  useEffect(() => setData(data?.sort(dynamicSort(filter))), [filter, data, setData])
 
   return (
     <>
@@ -70,7 +73,7 @@ export const Home = () => {
 
               <Row>
                 <Column>
-                  <GallerySection photos={filteredData} />
+                  <GallerySection photos={data} />
                 </Column>
               </Row>
             </>
