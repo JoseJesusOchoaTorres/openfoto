@@ -2,7 +2,7 @@
 import { HeaderContainer, HeaderButton } from './style'
 
 // Common componentes
-import { TextInput } from 'components/common/Input'
+import { SearchInput } from 'components/common/SearchInput'
 
 // Grid components
 import { Row, Column } from 'components/grid'
@@ -23,10 +23,7 @@ export const Header = ({ toggleMode, theme }) => {
         </Column>
 
         <Column>
-          <TextInput
-            type="search"
-            placeholder="What can we help you find today?"
-          />
+          <SearchInput/>
         </Column>
 
         <Column className="text-right">

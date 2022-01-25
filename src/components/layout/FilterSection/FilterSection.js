@@ -12,13 +12,15 @@ import { FilterOptions } from 'utils/constants'
 
 // Context
 import { FilterContext } from 'context/FilterProvider'
+import { PhotosContext } from 'context/PhotosProvider'
 
 export const FilterSection = () => {
   const [filter, setFilter] = useContext(FilterContext)
+  const { searchQuery } = useContext(PhotosContext)
 
   return (
     <Section.Container>
-      <Section.Keyword className="h2 bold text-center">This is the filter keyword</Section.Keyword>
+      {!!searchQuery && <Section.Keyword className="h2 bold text-center">{searchQuery}</Section.Keyword>}
       
       <Section.Filters>
         <RadioButtons.Container groupId="filter">

@@ -1,4 +1,7 @@
+// External libraries
 import { useEffect, useState, useCallback } from 'react'
+
+// Utils
 import { localStorageSetter, localStorageGetter } from 'utils/storage/localStorage'
 
 export const useTheme = () => {

@@ -34,8 +34,8 @@ export const AuthorContainer = styled.div`
   transition: all 0.2s;
 
   &:hover {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
     opacity: 1;
   }
 `
