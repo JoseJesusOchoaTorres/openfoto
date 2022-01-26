@@ -9,11 +9,10 @@ import { PhotosContext } from 'context/PhotosProvider'
 
 // Custom hooks
 import { useDebounce } from 'hooks/useDebounce'
-import { } from 'react/cjs/react.development'
 
 export const SearchInput = () => {
   const { setSearchQuery } = useContext(PhotosContext)
-  let textInput = useRef(null);
+  const inputRef = useRef()
 
   const handleOnChange = useCallback((evt) => {
     let query = evt.target.value
@@ -24,6 +23,7 @@ export const SearchInput = () => {
 
   const clear = () => {
     setSearchQuery('')
+    inputRef.current.value = ''
   }
 
   return (
@@ -33,7 +33,7 @@ export const SearchInput = () => {
       type="search"
       onChange={debouncedOnchange}
       onClear={clear}
-      rel={textInput}
+      ref={inputRef}
     />
   )
 }

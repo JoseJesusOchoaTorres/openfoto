@@ -1,5 +1,5 @@
 // External libraries
-import { memo } from 'react'
+import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
 // Constants
@@ -12,13 +12,16 @@ import {
   ClearIcon
 } from './style'
 
-export const TextInput = memo(({
+export const TextInput = forwardRef(({
   type = 'text',
   placeholder = '',
   onChange,
   onClear,
+  value,
   icon
-}) => (
+},
+  ref
+) => (
   <InputContainer>
     {!!IconsInterface[icon] && (
       <InputIcon
@@ -30,6 +33,8 @@ export const TextInput = memo(({
       type={type}
       placeholder={placeholder}
       onChange={onChange}
+      value={value}
+      ref={ref}
     />
     {!!onClear && (
       <ClearIcon
@@ -50,5 +55,6 @@ TextInput.propTypes = {
   onClear: PropTypes.func,
   placeholder: PropTypes.string,
   type: PropTypes.string,
+  // ref: PropTypes.,
   icon: PropTypes.string
 }
