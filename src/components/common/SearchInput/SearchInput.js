@@ -5,13 +5,13 @@ import { useCallback, useContext, useRef } from 'react'
 import { TextInput } from 'components/common/TextInput'
 
 // Context
-import { PhotosContext } from 'context/PhotosProvider'
+import { SearchContext } from 'context/SearchProvider'
 
 // Custom hooks
 import { useDebounce } from 'hooks/useDebounce'
 
 export const SearchInput = () => {
-  const { setSearchQuery } = useContext(PhotosContext)
+  const { setSearchQuery } = useContext(SearchContext)
   const inputRef = useRef()
 
   const handleOnChange = useCallback((evt) => {

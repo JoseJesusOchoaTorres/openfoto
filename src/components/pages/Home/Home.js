@@ -1,5 +1,5 @@
 // External libraries
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 
 // General components
 import { ErrorMessage } from 'components/common/ErrorMessage'
@@ -25,24 +25,34 @@ import { dynamicSort } from 'utils/general/sort'
 import { useAsync } from 'hooks/useAsync'
 
 // Endpoints
-import { getRandomPhotos } from 'utils/api/endpoints'
+import { getPhotosByQuery } from 'utils/api/endpoints'
 
 // Context
 import { FilterContext } from 'context/FilterProvider'
+import { SearchContext } from 'context/SearchProvider'
 
 export const Home = () => {
-  const { data, setData, run, isLoading, isSuccess, isError } = useAsync()
+  const { data, run, isLoading, isSuccess, isError } = useAsync()
+  const { searchQuery } = useContext(SearchContext)
   const [filter] = useContext(FilterContext)
+  const [photos, setPhotos] = useState([])
+
+ 
+  /**
+   * Fetching data by search key
+   */
+  useEffect(() => run(fetch(getPhotosByQuery(searchQuery))), [run, searchQuery])
 
   /**
-   * Fetching default data
+   * Updating local state
    */
-  useEffect(() => run(fetch(getRandomPhotos())), [run])
+  useEffect(() => setPhotos(data?.results), [data])
 
   /**
    * Applying filter
    */
-  useEffect(() => setData(data?.sort(dynamicSort(filter))), [filter, data, setData])
+  useEffect(() => setPhotos(photos?.sort(dynamicSort(filter))), [filter, photos, setPhotos])
+
 
   return (
     <>
@@ -73,7 +83,7 @@ export const Home = () => {
 
               <Row>
                 <Column>
-                  <GallerySection photos={data} />
+                  <GallerySection photos={photos} />
                 </Column>
               </Row>
             </>

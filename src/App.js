@@ -14,7 +14,7 @@ import { Footer } from 'components/layout/Footer'
 
 // Context
 import { FilterProvider } from "context/FilterProvider";
-import { PhotosProvider } from "context/PhotosProvider";
+import { SearchProvider } from "context/SearchProvider";
 
 function App() {
   const { theme, themeLoaded, toggleMode } = useTheme()
@@ -25,7 +25,7 @@ function App() {
         themeLoaded &&
         <ThemeProvider theme={theme}>
           <GlobalStyles />
-          <PhotosProvider>
+          <SearchProvider>
             <FilterProvider>
               <Header
                 toggleMode={toggleMode}
@@ -34,7 +34,7 @@ function App() {
               <Home />
               <Footer />
             </FilterProvider>
-          </PhotosProvider>
+          </SearchProvider>
         </ThemeProvider>
       }
     </>

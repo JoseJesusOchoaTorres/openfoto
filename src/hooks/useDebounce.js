@@ -1,4 +1,4 @@
-export const useDebounce = (func, timeout = 300) => {
+export const useDebounce = (func, timeout = 500) => {
   let timer;
 
   return (...args) => {

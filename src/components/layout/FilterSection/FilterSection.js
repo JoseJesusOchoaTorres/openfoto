@@ -12,11 +12,11 @@ import { FilterOptions } from 'utils/constants'
 
 // Context
 import { FilterContext } from 'context/FilterProvider'
-import { PhotosContext } from 'context/PhotosProvider'
+import { SearchContext } from 'context/SearchProvider'
 
 export const FilterSection = () => {
   const [filter, setFilter] = useContext(FilterContext)
-  const { searchQuery } = useContext(PhotosContext)
+  const { searchQuery } = useContext(SearchContext)
 
   return (
     <Section.Container>
