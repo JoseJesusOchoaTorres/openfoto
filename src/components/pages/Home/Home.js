@@ -33,10 +33,14 @@ import { SearchContext } from 'context/SearchProvider'
 
 export const Home = () => {
   const { data, run, isLoading, isSuccess, isError } = useAsync()
-  const { searchQuery } = useContext(SearchContext)
+  const { setSearchQuery, searchQuery } = useContext(SearchContext)
   const [filter] = useContext(FilterContext)
   const [photos, setPhotos] = useState([])
 
+  /**
+   * Cleaning key filter when is favorites in home.
+   */
+  useEffect(() => (searchQuery === 'favorites') && setSearchQuery('random'), [searchQuery, setSearchQuery])
  
   /**
    * Fetching data by search key
