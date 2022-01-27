@@ -11,16 +11,24 @@ import { Image } from 'components/common/Image'
 // Local components
 import { GallerySection as Section } from "./style"
 
+// Custom hooks
+import { useFavorites } from 'hooks/useFavorites'
+
 export const GallerySection = ({ photos }) => {
+  const { isInFavorites, toggleFavorites } = useFavorites()
+
   return (
     <Section.Container className="flex horizontal-center">
       <Row>
         {!!photos && photos.map(({ id, alt_description = '', user, links, urls }) => (
           <Column key={id} padding="1" xs="12" sm="12" md="6" lg="4" xl="3">
             <ImageActions
-              id={id}
-              user={user}
+              isInFavorites={isInFavorites(id)}
+              toggleFavorites={toggleFavorites}
               links={links}
+              user={user}
+              urls={urls}
+              id={id}
               image={
                 <Image
                   alt={alt_description}
@@ -30,10 +38,8 @@ export const GallerySection = ({ photos }) => {
                     ${urls.thumb} 150w,
                     ${urls.small} 300w,
                     ${urls.regular} 600w,
-                    ${urls.raw} 1000w,
-                    ${urls.full} 1500w
                   `}
-                  src={urls.full}
+                  src={urls.regular}
                 />
               }
             />

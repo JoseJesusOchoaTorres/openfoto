@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 // Local components
 import { ButtonBase, ButtonIcon } from './style'
 
-export const Button = ({ children, icon, title = "" }) => {
+export const Button = ({ onClick = () => {}, children, icon, title = "" }) => {
   return (
-    <ButtonBase title={title}>
+    <ButtonBase title={title} onClick={onClick}>
       {!!icon && (
         <ButtonIcon
           aria-hidden="true"
@@ -19,6 +19,7 @@ export const Button = ({ children, icon, title = "" }) => {
 }
 
 Button.propTypes = {
+  onClick: PropTypes.func,
   children: PropTypes.node,
   icon: PropTypes.string,
 }

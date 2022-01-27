@@ -1,4 +1,5 @@
 // External libraries
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 // Common components
@@ -16,11 +17,19 @@ import {
 // Constants
 import { IconsInterface } from 'utils/constants'
 
-export const ImageActions = ({ id, user, links, image }) => {
-  /**
-   * Icons
-   */
-  const { download, heart } = IconsInterface
+// Custom hooks
+import { useDebounce } from 'hooks/useDebounce'
+
+export const ImageActions = ({ id, user, links, urls, image, toggleFavorites, isInFavorites = false }) => {
+  const { download, heart, heartFilled } = IconsInterface
+  const [favorited, setFavorited] = useState(isInFavorites)
+
+  const handleToggle = () => {
+    toggleFavorites({ id, user, links, urls })
+    setFavorited(!favorited)
+  }
+  
+  const debouncedToggle = useDebounce(handleToggle, 300)
 
   return (
     <Container>
@@ -44,7 +53,12 @@ export const ImageActions = ({ id, user, links, image }) => {
           >
             <Button title="Download" icon={download} />
           </a>
-          <Button title="Add to favorites" icon={heart} data-image-id={id} />
+
+          <Button
+            title="Add to favorites"
+            icon={favorited ? heartFilled : heart}
+            onClick={debouncedToggle}
+          />
         </ActionsContainer>
       </AuthorContainer>
     </Container>
@@ -52,8 +66,11 @@ export const ImageActions = ({ id, user, links, image }) => {
 }
 
 ImageActions.propTypes = {
-  id: PropTypes.string.isRequired,
-  image: PropTypes.node.isRequired,
+  toggleFavorites: PropTypes.func.isRequired,
+  links: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  links: PropTypes.object.isRequired
+  urls: PropTypes.object.isRequired,
+  image: PropTypes.node.isRequired,
+  id: PropTypes.string.isRequired,
+  isInFavorites: PropTypes.bool
 }

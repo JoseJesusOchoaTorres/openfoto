@@ -69,7 +69,7 @@ export const Home = () => {
             <Spinner
               className="h1 large"
               aria-hidden="true"
-              icon={IconsInterface['spinner-solid']}
+              icon={IconsInterface['spinnerSolid']}
             />
           </Spinner.Container>
         ) :

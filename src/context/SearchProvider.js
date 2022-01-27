@@ -4,7 +4,7 @@ import { createContext, useState } from 'react'
 const SearchContext = createContext()
 
 const SearchProvider = (props) => {
-  const [searchQuery, setSearchQuery] = useState('black and white')
+  const [searchQuery, setSearchQuery] = useState('random')
   
   const value = {
     searchQuery,

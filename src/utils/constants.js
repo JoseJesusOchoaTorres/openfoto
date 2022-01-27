@@ -1,6 +1,6 @@
 export const IconsInterface = {
-  'spinner-solid': 'spinner-solid',
-  'heart-filled': 'heart-filled',
+  'spinnerSolid': 'spinner-solid',
+  'heartFilled': 'heart-filled',
   cleanSearch: 'close',
   search: 'search-alt',
   heart: 'heart',
