@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 const Container = styled.div`
+  text-transform: uppercase;
   padding: 5vh 1rem;
 `
 

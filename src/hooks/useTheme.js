@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react'
+// External libraries
+import { useEffect, useState, useCallback } from 'react'
+
+// Utils
 import { localStorageSetter, localStorageGetter } from 'utils/storage/localStorage'
 
 export const useTheme = () => {
@@ -7,16 +10,20 @@ export const useTheme = () => {
   const [theme, setTheme] = useState(themes.data.light)
   const [themeLoaded, setThemeLoaded] = useState(false)
 
-  const setMode = mode => {
-    localStorageSetter('theme', mode)
-    setTheme(mode)
-  }
+  const setMode = useCallback(
+    mode => {
+      localStorageSetter('theme', mode)
+      setTheme(mode)
+    }, [setTheme]
+  )
 
-  const toggleMode = () => {
-    theme.name === 'light' ?
-      setMode(themes.data.dark) :
-      setMode(themes.data.light)
-  }
+  const toggleMode = useCallback(
+    () => {
+      theme.name === 'light' ?
+        setMode(themes.data.dark) :
+        setMode(themes.data.light)
+    }, [setMode, theme.name, themes.data.dark, themes.data.light]
+  )
 
   useEffect(() => {
     const localTheme = localStorageGetter('theme')

@@ -1,5 +1,5 @@
 // External libraries
-import { useState } from 'react'
+import { useContext } from 'react'
 
 // Local components
 import { FilterSection as Section } from './style'
@@ -10,21 +10,24 @@ import { RadioButtons } from 'components/common/RadioButtons'
 // Valid filter options
 import { FilterOptions } from 'utils/constants'
 
-export const FilterSection = ({
-  filter = FilterOptions[0].value
-}) => {
-  const [filterSelected, setFilterSelected] = useState(filter)
+// Context
+import { FilterContext } from 'context/FilterProvider'
+import { SearchContext } from 'context/SearchProvider'
+
+export const FilterSection = () => {
+  const [filter, setFilter] = useContext(FilterContext)
+  const { searchQuery } = useContext(SearchContext)
 
   return (
     <Section.Container>
-      <Section.Keyword className="h2 bold text-center">This is the filter keyword</Section.Keyword>
+      {!!searchQuery && <Section.Keyword className="h2 bold text-center">{searchQuery}</Section.Keyword>}
       
       <Section.Filters>
         <RadioButtons.Container groupId="filter">
           <RadioButtons
-            selectedOption={filterSelected}
-            onChange={setFilterSelected}
             options={FilterOptions}
+            selectedOption={filter}
+            onChange={setFilter}
           />
         </RadioButtons.Container>
       </Section.Filters>

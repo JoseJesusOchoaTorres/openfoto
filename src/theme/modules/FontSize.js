@@ -6,4 +6,8 @@ export const FontSize = css`
         font-size: ${size}rem
     }`
   ))};
+
+  .h1.large {
+    font-size: 5rem;
+  }
 `

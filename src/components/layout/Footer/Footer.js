@@ -4,7 +4,7 @@ import { FooterContainer, Description } from "./style"
 export const Footer = () => {
   return (
     <FooterContainer>
-      <Row className="horizontal-center text-center">
+      <Row className="horizontal-center text-center horizontal-center vertical-center">
         <Column>
           <Description className="h6">Powered by creators everywhere</Description>
         </Column>

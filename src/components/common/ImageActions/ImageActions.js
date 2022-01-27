@@ -1,4 +1,5 @@
 // External libraries
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 // Common components
@@ -16,40 +17,48 @@ import {
 // Constants
 import { IconsInterface } from 'utils/constants'
 
-/**
- * TODO: Remove this mock
- */
-export const ImageActions = ({ image }) => {
-  /**
-   * Icons
-   */
-  const { download, heart } = IconsInterface
+// Custom hooks
+import { useDebounce } from 'hooks/useDebounce'
 
-  const mockingUserProfile = {
-    first_name: 'Javier',
-    last_name: 'Esteban',
-    profile_image: {
-      small: 'https://images.unsplash.com/profile-1621107238073-d8037d5def74image?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32',
-      medium: 'https://images.unsplash.com/profile-1621107238073-d8037d5def74image?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=64&w=64',
-    }
+export const ImageActions = ({ id, user, links, urls, image, toggleFavorites, isInFavorites = false }) => {
+  const { download, heart, heartFilled } = IconsInterface
+  const [favorited, setFavorited] = useState(isInFavorites)
+
+  const handleToggle = () => {
+    toggleFavorites({ id, user, links, urls })
+    setFavorited(!favorited)
   }
+  
+  const debouncedToggle = useDebounce(handleToggle, 300)
 
-  const composeFullName = () => `${mockingUserProfile.first_name} ${mockingUserProfile.last_name}`
   return (
     <Container>
       {image}
       <AuthorContainer>
         <AuthorImageProfile
-          src={mockingUserProfile.profile_image.medium}
-          alt={composeFullName()}
+          src={user.profile_image.large}
+          title={user.name}
+          alt={user.name}
         />
         <AuthorName>
-          {composeFullName()}
+          {user.name}
         </AuthorName>
 
         <ActionsContainer>
-          <Button title="Download" icon={download} />
-          <Button title="Add to favorites" icon={heart} />
+          <a
+            title='Download image'
+            href={links.download}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button title="Download" icon={download} />
+          </a>
+
+          <Button
+            title="Add to favorites"
+            icon={favorited ? heartFilled : heart}
+            onClick={debouncedToggle}
+          />
         </ActionsContainer>
       </AuthorContainer>
     </Container>
@@ -57,5 +66,11 @@ export const ImageActions = ({ image }) => {
 }
 
 ImageActions.propTypes = {
-  image: PropTypes.node.isRequired
+  toggleFavorites: PropTypes.func.isRequired,
+  links: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  urls: PropTypes.object.isRequired,
+  image: PropTypes.node.isRequired,
+  id: PropTypes.string.isRequired,
+  isInFavorites: PropTypes.bool
 }

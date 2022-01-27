@@ -8,6 +8,9 @@ export const Container = styled.figure`
   background-color: ${({ theme }) => theme.colors.text};
   color: ${({ theme }) => theme.colors.body};
   position: relative;
+  display: flex;
+  height: 100%;
+  margin: 0;
 
   image:hover {
     opacity: 0.2;
@@ -31,8 +34,8 @@ export const AuthorContainer = styled.div`
   transition: all 0.2s;
 
   &:hover {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
     opacity: 1;
   }
 `
@@ -48,6 +51,8 @@ export const AuthorName = styled.figcaption`
 
 export const AuthorImageProfile = styled(Image)`
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  max-height: 80px;
+  max-width: 80px;
+  height: 15vw;
+  width: auto;
 `

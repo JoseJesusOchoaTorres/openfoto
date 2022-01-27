@@ -2,6 +2,7 @@ import styled, { css } from "styled-components"
 import { breakpoints } from "theme/breakpoints"
 
 export const Column = styled.div`
+  ${props => (props.padding ? `padding: ${props.padding}rem` : '')};
   flex: 1;
 
   ${Object.keys(breakpoints?.device).map((breakpoint) =>

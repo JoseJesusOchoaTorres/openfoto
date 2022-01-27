@@ -2,34 +2,40 @@
 import { HeaderContainer, HeaderButton } from './style'
 
 // Common componentes
-import { TextInput } from 'components/common/Input'
+import { SearchInput } from 'components/common/SearchInput'
 
 // Grid components
 import { Row, Column } from 'components/grid'
 
 // Constants
 import { IconsInterface } from 'utils/constants'
+import { Routes } from 'utils/constants'
+
+// Custom hooks
+import { useIsFavorites } from 'hooks/useIsFavorites'
+
+// Router
+import { Link } from 'react-router-dom'
 
 export const Header = ({ toggleMode, theme }) => {
+  const isFavorite = useIsFavorites()
+
   return (
     <HeaderContainer>
       <Row className="vertical-center horizontal-between">
-        <Column>
+        <Column xs="12" sm="12" md="4" lg="4">
           <h1 className="h5 bold">
-            <a href="/" title="OpenFoto">
-              ▲ OpenFoto
-            </a>
+            <Link to="/" title="OpenFoto">
+              ▲ OpenFoto <span className='lighter'>/ {isFavorite ? 'Favorites' : 'Home'}</span>
+            </Link>
           </h1>
         </Column>
 
-        <Column>
-          <TextInput
-            type="search"
-            placeholder="What can we help you find today?"
-          />
+        <Column xs="6" sm="6" md="6" lg="4">
+          <SearchInput />
         </Column>
 
-        <Column className="text-right">
+        <Column xs="6" sm="6" md="2" lg="4" className="text-right">
           <HeaderButton
             as="button"
             role="button"
@@ -39,14 +45,29 @@ export const Header = ({ toggleMode, theme }) => {
             icon={IconsInterface[theme.name]}
             onClick={() => toggleMode()}
           />
-          <HeaderButton
-            as="button"
-            role="button"
-            title="Favorites"
-            aria-hidden="false"
-            aria-label="Favorites"
-            icon={IconsInterface.heart}
-          />
+          {isFavorite ? (
+            <Link to={Routes.home}>
+              <HeaderButton
+                as="button"
+                role="button"
+                title="Go home"
+                aria-hidden="false"
+                aria-label="Go home"
+                icon={IconsInterface.home}
+              />
+            </Link>
+          ) : (
+            <Link to={Routes.favorites}>
+              <HeaderButton
+                as="button"
+                role="button"
+                title="Go favorites"
+                aria-hidden="false"
+                aria-label="Go favorites"
+                icon={IconsInterface.heart}
+              />
+            </Link>
+          )}
         </Column>
       </Row>
     </HeaderContainer>
