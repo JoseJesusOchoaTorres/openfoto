@@ -1,5 +1,5 @@
 // External libraries
-import { useCallback, useContext, useRef } from 'react'
+import { useCallback, useContext, useRef, useEffect } from 'react'
 
 // Commun componentes
 import { TextInput } from 'components/common/TextInput'
@@ -13,7 +13,6 @@ import { useIsFavorites } from 'hooks/useIsFavorites'
 
 // Routing
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react/cjs/react.development'
 
 export const SearchInput = () => {
   const { setSearchQuery } = useContext(SearchContext)
