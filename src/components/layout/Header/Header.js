@@ -25,7 +25,7 @@ export const Header = ({ toggleMode, theme }) => {
       <Row className="vertical-center horizontal-between">
         <Column xs="12" sm="12" md="4" lg="4">
           <h1 className="h5 bold">
-            <Link to="/" title="OpenFoto">
+            <Link to="/" title="OpenFoto - Home">
               ▲ OpenFoto <span className='lighter'>/ {isFavorite ? 'Favorites' : 'Home'}</span>
             </Link>
           </h1>

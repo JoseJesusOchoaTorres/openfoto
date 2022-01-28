@@ -20,7 +20,8 @@ export const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
 
     background-image: radial-gradient(${({ theme }) => theme.colors.text}50 5%, transparent 5%);
-    background-size: 22px 22px;
+    background-position: center;
+    background-size: 23px 23px;
   }
 
   a {

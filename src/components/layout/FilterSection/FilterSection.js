@@ -1,4 +1,5 @@
 // External libraries
+import PropTypes from 'prop-types'
 import { useContext } from 'react'
 
 // Local components
@@ -14,7 +15,7 @@ import { FilterOptions } from 'utils/constants'
 import { FilterContext } from 'context/FilterProvider'
 import { SearchContext } from 'context/SearchProvider'
 
-export const FilterSection = () => {
+export const FilterSection = ({ noFilterOptions = false }) => {
   const [filter, setFilter] = useContext(FilterContext)
   const { searchQuery } = useContext(SearchContext)
 
@@ -22,7 +23,8 @@ export const FilterSection = () => {
     <Section.Container>
       {!!searchQuery && <Section.Keyword className="h2 bold text-center">{searchQuery}</Section.Keyword>}
       
-      <Section.Filters>
+      {!noFilterOptions &&
+        <Section.Filters>
         <RadioButtons.Container groupId="filter">
           <RadioButtons
             options={FilterOptions}
@@ -31,6 +33,11 @@ export const FilterSection = () => {
           />
         </RadioButtons.Container>
       </Section.Filters>
+      }
     </Section.Container>
   )
+}
+
+FilterSection.propTypes = {
+  noFilterOptions: PropTypes.bool
 }
