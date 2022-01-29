@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 // Common components
-import { Image } from 'components/common/Image'
+import { BaseImage } from 'components/common/Image/style'
 
 export const Container = styled.figure`
   background-color: ${({ theme }) => theme.colors.text};
@@ -49,7 +49,7 @@ export const AuthorName = styled.figcaption`
   margin: 1rem 0.5rem;
 `
 
-export const AuthorImageProfile = styled(Image)`
+export const AuthorImageProfile = styled(BaseImage)`
   border-radius: 50%;
   max-height: 80px;
   max-width: 80px;
