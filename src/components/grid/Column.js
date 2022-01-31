@@ -8,7 +8,7 @@ export const Column = styled.div`
   ${Object.keys(breakpoints?.device).map((breakpoint) =>
     props => props[breakpoint] && css`
       @media ${breakpoints.device[breakpoint]} {
-        flex: 0 0 ${(props[breakpoint] * 100) / breakpoints.columns}%;
+        flex: ${props => (props.grow ? '1' : '0')} 0 ${(props[breakpoint] * 100) / breakpoints.columns}%;
       }
     }`
   )}
