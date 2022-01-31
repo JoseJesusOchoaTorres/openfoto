@@ -39,7 +39,7 @@ export const GallerySection = ({ photos }) => {
                     ${urls.small} 300w,
                     ${urls.regular} 600w,
                   `}
-                  src={urls.small}
+                  src={urls.regular}
                 />
               }
             />
