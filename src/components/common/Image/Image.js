@@ -6,11 +6,12 @@ import PropTypes from 'prop-types'
 import { PlaceholderImage } from 'utils/constants'
 
 // Local components
-import { Image as BaseImage } from './style'
+import { BaseImage } from './style'
 
 export const Image = ({
   src = PlaceholderImage,
   loading = 'lazy',
+  objectFit = 'contain',
   alt = '',
   srcset,
 }) => {
@@ -19,6 +20,7 @@ export const Image = ({
   return (
     <BaseImage
       onError={() => setLocalSrc(PlaceholderImage)}
+      objectFit={objectFit}
       loading={loading}
       srcSet={srcset}
       src={localSrc}
@@ -30,6 +32,7 @@ export const Image = ({
 Image.propTypes = {
   src: PropTypes.string,
   loading: PropTypes.string,
+  objectFit: PropTypes.string,
   alt: PropTypes.string,
   srcset: PropTypes.string
 }

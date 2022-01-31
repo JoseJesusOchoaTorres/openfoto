@@ -1,1 +1,1 @@
-export { Icon } from './style'
+export { Icon } from './Icon'

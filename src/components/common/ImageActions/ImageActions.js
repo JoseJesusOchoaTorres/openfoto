@@ -32,7 +32,9 @@ export const ImageActions = ({ id, user, links, urls, image, toggleFavorites, is
   const debouncedToggle = useDebounce(handleToggle, 300)
 
   return (
-    <Container>
+    <Container
+      data-testid={`image-action__container-${id}`}
+    >
       {image}
       <AuthorContainer>
         <AuthorImageProfile
