@@ -21,7 +21,7 @@ export const GallerySection = ({ photos }) => {
     <Section.Container className="flex horizontal-center">
       <Row>
         {!!photos && photos.map(({ id, alt_description = 'Unsplash Photo', user, links, urls }) => (
-          <Column key={id} padding="1" xs="12" sm="12" md="6" lg="4" xl="3">
+          <Column key={id} padding="1" grow xs="12" sm="12" md="6" lg="4" xl="3">
             <ImageActions
               isInFavorites={isInFavorites(id)}
               toggleFavorites={toggleFavorites}
